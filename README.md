@@ -38,8 +38,12 @@ The recordings come from the author's [original audio samples page](https://h0yj
 
 Prompt excerpts are derived from the attachment filenames rather than verified full transcripts. Gorou and Yae Miko are identified in the source collection as Genshin Impact character voices by miHoYo. See [ASSET_SOURCES.md](ASSET_SOURCES.md).
 
+## Regression checks
+
+Run `node --test scripts/position-lock.test.cjs` with Node.js 18 or newer. The tests execute the real playback handlers with delayed media metadata and check queued-position switching, independent positions and live error announcements. See [docs/VALIDATION.md](docs/VALIDATION.md) for browser and media checks.
+
 ## Publishing and maintenance
 
-GitHub Pages publishes the `master` branch from `/ (root)`. The project lives at `/bigvgan-spl/`, leaving room for other projects in this account's Pages repository. Update a recording and its corresponding manifest metadata together.
+The `.github/workflows/pages.yml` GitHub Actions workflow checks JavaScript syntax and playback regressions, then publishes the static repository root whenever `master` changes. The project lives at `/bigvgan-spl/`, leaving room for other projects in this account's Pages repository. Update a recording and its corresponding manifest metadata together.
 
 The experiment code remains in a separate repository and is being prepared for public release. The page intentionally labels that future release as `Code soon`.

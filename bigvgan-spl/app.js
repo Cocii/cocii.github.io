@@ -130,6 +130,7 @@ function render(focusSelector) {
       if (generation !== currentGeneration) return;
       error.hidden = false;
       error.textContent = 'Audio could not load. Select Play to retry, or open the original collection below.';
+      status.textContent = `${name} audio could not load. Select Play to retry.`;
       updateButton(false);
     });
     if (slider) slider.addEventListener('input', () => {
@@ -146,7 +147,7 @@ function render(focusSelector) {
       }
       let startTime = audio.ended ? 0 : (track.pendingTime ?? audio.currentTime);
       if (lockPosition && activeTrack && activeTrack !== track && id !== 'reference' && activeTrack.id !== 'reference') {
-        startTime = activeTrack.audio.ended ? 0 : activeTrack.audio.currentTime;
+        startTime = activeTrack.audio.ended ? 0 : (activeTrack.pendingTime ?? activeTrack.audio.currentTime);
       }
       pauseAll();
       activeTrack = track;
@@ -179,7 +180,7 @@ async function init() {
     }
   } catch (error) {
     workspace.setAttribute('aria-busy', 'false');
-    workspace.innerHTML = '<p class="initial-state">The audio collection could not load. Please reload this page or visit the <a href="https://h0yjmbl9to9.feishu.cn/docx/FH7mdd1dco6xDkxFlhPchve8nyh">original audio collection</a>.</p>';
+    workspace.innerHTML = '<p class="initial-state" role="alert">The audio collection could not load. Please reload this page or visit the <a href="https://h0yjmbl9to9.feishu.cn/docx/FH7mdd1dco6xDkxFlhPchve8nyh">original audio collection</a>.</p>';
     console.error('Could not initialize audio collection:', error);
   }
 }

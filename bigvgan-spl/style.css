@@ -17,3 +17,8 @@
 .play-button,.download-link{position:relative}.play-button:before,.download-link:before{content:'';position:absolute;inset:-5px}
 @media(max-width:480px){.speaker-detail{white-space:nowrap}.waveform-control input{height:44px}}
 .code-pending{color:var(--muted);font-size:11px}.study-intro .code-release-note{font-size:11px;font-weight:700;padding-top:8px}
+/* Keep narrow layouts within the workspace and provide comfortable touch targets. */
+.speaker-panel{min-width:0}.play-button:before,.download-link:before{inset:-6px}
+.reference-button,.prompt-control select,.lock-control{min-height:44px}
+@media(max-width:800px){.workspace{grid-template-columns:minmax(0,1fr)}.speaker-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:360px){.speaker-list{grid-template-columns:repeat(2,minmax(0,1fr))}.speaker-name{font-size:11px}}
