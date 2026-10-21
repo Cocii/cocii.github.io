@@ -24,4 +24,4 @@ The SVGs are local vector assets with text and shapes, without external renderin
 
 ## Deployment
 
-The public listening page is published at `https://cocii.github.io/adversarial-tts/` from the separate `Cocii/cocii.github.io` website repository. Only the static page, fonts, artwork, sample metadata and the existing public audio recordings are included. Research source code and model weights remain in private repositories. The Hugging Face model files have been uploaded; full file integrity verification remains pending. The older audio page remains available.
+The public listening page is published at `https://cocii.github.io/adversarial-tts/` from the separate `Cocii/cocii.github.io` website repository. Only the static page, fonts, artwork, sample metadata and the existing public audio recordings are included. Model checkpoints and matching inference configurations are available separately at https://huggingface.co/Cocii/adversarial-tts. Model files are not included in the website repository. The older audio page remains available.

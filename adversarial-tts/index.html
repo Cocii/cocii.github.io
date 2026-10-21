@@ -23,7 +23,7 @@
   <a class="skip-link" href="#listen">Skip to audio samples</a>
   <header class="site-header wrap">
     <a class="brand" href="#top"><img src="assets/favicon.svg" width="30" height="30" alt=""><span>Adversarial TTS</span></a>
-    <nav aria-label="Main navigation"><a href="#listen">Listen</a><a href="https://github.com/Cocii/adversarial-tts">Code · private</a><a href="#models">Models</a></nav>
+    <nav aria-label="Main navigation"><a href="#listen">Listen</a><a href="https://github.com/Cocii/adversarial-tts">Code</a><a href="#models">Models</a></nav>
   </header>
   <main id="top">
     <section class="hero wrap" aria-labelledby="project-title">
@@ -71,33 +71,36 @@
     <section id="models" class="models-section wrap" aria-labelledby="models-title">
       <div class="section-heading"><h2 id="models-title">Models and configuration.</h2><p>Matching acoustic weights, three vocoders, <br> and explicit inference configuration.</p></div>
       <div class="model-release">
-        <div class="release-copy"><span class="release-status"><span aria-hidden="true"></span>Private · files uploaded</span><h3>Acoustic + V / VR / VRT</h3><p>The acoustic model, V / VR / VRT vocoders, and matching configuration files are hosted in the private Hugging Face repository. Downloading requires repository access. File integrity verification is pending.</p><div class="resource-links"><a class="text-link" href="https://huggingface.co/Cocii/adversarial-tts/tree/main">Hugging Face · private</a><a class="text-link" href="https://github.com/Cocii/adversarial-tts/blob/master/docs/MODELS.md">Model guide · private</a></div></div>
+        <div class="release-copy"><span class="release-status"><span aria-hidden="true"></span>Model checkpoints</span><h3>Acoustic + V / VR / VRT</h3><p>Download the AdaSpeech acoustic model, V / VR / VRT vocoders, and matching configurations from Hugging Face. The package includes pronunciation dictionaries and a ready-to-use synthesis bundle.</p><div class="resource-links"><a class="text-link" href="https://huggingface.co/Cocii/adversarial-tts/tree/main">Download models</a><a class="text-link" href="https://github.com/Cocii/adversarial-tts/blob/master/docs/MODELS.md">Model guide</a></div></div>
         <dl class="model-specs"><div><dt>Acoustic model</dt><dd>AdaSpeech · reference-conditioned</dd></div><div><dt>Vocoder</dt><dd>BigVGAN · V, VR, VRT</dd></div><div><dt>Interface</dt><dd>22.05 kHz · 80-band mel · hop 256</dd></div><div><dt>Voice conditioning</dt><dd>512-D embedding + reference mel or audio</dd></div></dl>
       </div>
     </section>
 
     <section id="quick-start" class="quick-start wrap" aria-labelledby="quick-start-title">
-      <div class="quick-start-copy"><h2 id="quick-start-title">Make your first <br> waveform.</h2><p>Install the project, provide matching model assets and reference conditioning, then select a vocoder.</p><p class="quick-start-requirement">Python 3.10+ <br> Acoustic: CPU or CUDA <br> Vocoder: CPU, CUDA, or explicit Apple MPS</p><a class="button light" href="https://github.com/Cocii/adversarial-tts/blob/master/README.md">Setup guide · private</a></div>
+      <div class="quick-start-copy"><h2 id="quick-start-title">Make your first <br> waveform.</h2><p>Install the project, provide matching model assets and reference conditioning, then select a vocoder.</p><p class="quick-start-requirement">Python 3.10+ <br> Acoustic: CPU or CUDA <br> Vocoder: CPU, CUDA, or explicit Apple MPS</p><a class="button light" href="https://github.com/Cocii/adversarial-tts/blob/master/README.md">Setup guide</a></div>
       <div class="code-example"><div class="code-heading"><span>Text → mel → WAV</span><span>With your configured assets</span></div><pre><code><span class="code-comment"># Install once</span>
-python -m pip install -e ".[acoustic,vocoder]"
+python -m pip install -e ".[acoustic,vocoder]" huggingface_hub
+
+<span class="code-comment"># Download checkpoints</span>
+hf download Cocii/adversarial-tts --local-dir checkpoints
 
 <span class="code-comment"># Select V, VR, or VRT</span>
 python inference.py \
-  --config configs/my-models.yaml \
+  --config checkpoints/tts.yaml \
   --text "Hello, this is a speech synthesis example." \
   --reference-embedding /path/to/speaker.npy \
   --reference-mel /path/to/reference-mel.npy \
-  --vocoder VRT --output-dir outputs/example</code></pre><p>Requires an existing model bundle, speaker embedding, and reference mel. Models are not downloaded automatically. Code and model repositories currently require access permission.</p></div>
+  --vocoder VRT --output-dir outputs/example</code></pre><p>Requires an existing model bundle, speaker embedding, and reference mel. Models are not downloaded automatically.</p></div>
     </section>
 
     <section id="resources" class="resources-section wrap" aria-labelledby="resources-title">
       <div class="section-heading"><h2 id="resources-title">Code, context, and credits.</h2></div>
       <div class="resource-list">
-        <article class="resource-row"><h3>Documentation</h3><div><p>Installation, text and batch synthesis, conditioning, saved-mel vocoding, WAV resynthesis, training, and testing. The documentation is in the private code repository; access permission is required.</p><div class="resource-links"><a class="text-link" href="https://github.com/Cocii/adversarial-tts">GitHub · private</a><a class="text-link" href="https://github.com/Cocii/adversarial-tts/blob/master/README.md">English</a><a class="text-link" href="https://github.com/Cocii/adversarial-tts/blob/master/README.zh-CN.md" lang="zh-CN">简体中文</a><a class="text-link" href="https://github.com/Cocii/adversarial-tts/blob/master/README.it.md" lang="it">Italiano</a></div></div></article>
+        <article class="resource-row"><h3>Documentation</h3><div><p>Installation, text and batch synthesis, conditioning, saved-mel vocoding, WAV resynthesis, training, and testing.</p><div class="resource-links"><a class="text-link" href="https://github.com/Cocii/adversarial-tts">GitHub</a><a class="text-link" href="https://github.com/Cocii/adversarial-tts/blob/master/README.md">English</a><a class="text-link" href="https://github.com/Cocii/adversarial-tts/blob/master/README.zh-CN.md" lang="zh-CN">简体中文</a><a class="text-link" href="https://github.com/Cocii/adversarial-tts/blob/master/README.it.md" lang="it">Italiano</a></div></div></article>
         <article class="resource-row"><h3>Acknowledgements</h3><div><p>We thank <a href="https://speechresearch.github.io/adaspeech/">Microsoft’s AdaSpeech</a> for the acoustic-model foundation and <a href="https://github.com/NVIDIA/BigVGAN">NVIDIA BigVGAN</a> for waveform synthesis, along with the authors of HiFi-GAN, Snake/alias-free activations, Tacotron utilities, RawNet2, TSSD, and AASIST. Original attribution and applicable license notices are retained in the <a href="https://github.com/Cocii/adversarial-tts/blob/master/THIRD_PARTY_NOTICES.md">source repository</a>.</p></div></article>
         <article class="resource-row"><h3>About the recordings</h3><div><p>The collection includes four training-set speakers and two unseen voices. Gorou and Yae Miko are character voices from <i>Genshin Impact</i> by miHoYo, as identified in the original collection. Speaker references contain different text from the synthesized prompts; excerpts are reconstructed from source filenames.</p><p>The recordings illustrate the methods; detector metrics are evaluated separately in the paper. No blanket license is asserted for the recordings or model weights.</p><a class="text-link" href="https://h0yjmbl9to9.feishu.cn/docx/FH7mdd1dco6xDkxFlhPchve8nyh">Original audio collection</a></div></article>
       </div>
-      <p class="preview-note">Listen to the audio examples here without signing in. Code and model downloads require access to their private repositories.</p>
+      <p class="preview-note">Listen to the original research recordings, then explore the models and synthesis guide.</p>
     </section>
   </main>
   <footer class="site-footer wrap"><a class="brand" href="#top"><img src="assets/favicon.svg" width="24" height="24" alt=""><span>Adversarial TTS</span></a><p>Cui, Salvi, Bestagini, Tubaro <br> Politecnico di Milano</p><a class="text-link" href="#listen">Back to listening</a></footer>
