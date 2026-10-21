@@ -1,0 +1,27 @@
+# Asset sources
+
+## Research content and recordings
+
+Paper: **Adversarial Text-to-Speech Synthesis Against Forensic Deepfake Detection**, Jiayan Cui, Davide Salvi, Paolo Bestagini and Stefano Tubaro, Politecnico di Milano. Method descriptions were checked against the manuscript supplied by the author. Publication date, venue and DOI are omitted because the supplied manuscript does not establish them.
+
+The 60 WAV files come from the author's existing [Audio Samples collection](https://h0yjmbl9to9.feishu.cn/docx/FH7mdd1dco6xDkxFlhPchve8nyh), accessed on 2026-10-19. There are six speaker references and 54 synthesized samples: six speakers × three prompts × three vocoders. Column mapping follows the source collection: reference, V, VR, VRT. The source filenames and SHA-256 values are preserved in `samples.json`, served beneath the `https://cocii.github.io/adversarial-tts/` base path.
+
+The source identifies Gorou and Yae Miko as characters from **Genshin Impact** by **miHoYo**. These examples and references are presented with that attribution. The font license does not extend to the audio recordings or other research materials; no new blanket license for those materials is asserted here.
+
+Prompt excerpts are reconstructed from attachment filenames and are not verified full transcripts. Speaker references have different text from the synthesized prompts. The source introduction has inconsistent row numbering; the site uses the explicit speaker labels in the actual table.
+
+## Typography
+
+Manrope, weights 400, 600, 700 and 800, retrieved from Google Fonts. The font is distributed under the SIL Open Font License 1.1; the full notice is in `site/assets/fonts/OFL.txt` (served as `assets/fonts/OFL.txt`).
+
+- [Google Fonts Manrope source and license](https://github.com/google/fonts/tree/main/ofl/manrope)
+
+## Artwork
+
+The live hero and player waveforms use the stored peaks from `site/samples.json`. The hero shows Woman 29, “The wingtip”, for V, VR, and VRT. The shared SVG cover at `docs/assets/cover.svg` and `site/assets/cover.svg` uses the same three sets of 96 original peaks. Its bars use the same amplitude mapping as the player, with a fixed display height and width; they are visual summaries, not measurements of model quality. The two cover copies are byte-identical. The icon takes seven peak maxima from the same VRT sample.
+
+The SVGs are local vector assets with text and shapes, without external rendering services, scripts, embedded raster imagery or new font dependencies. No stock imagery or newly synthesized speech is used.
+
+## Deployment
+
+The public listening page is published at `https://cocii.github.io/adversarial-tts/` from the separate `Cocii/cocii.github.io` website repository. Only the static page, fonts, artwork, sample metadata and the existing public audio recordings are included. Research source code and model weights remain in private repositories. The Hugging Face model files have been uploaded; full file integrity verification remains pending. The older audio page remains available.
